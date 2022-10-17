@@ -12,7 +12,15 @@ jobs:
         steps:
             - name: 📚 checkout
               uses: actions/checkout@v2.1.1
-              
+
+            # Setup Registry
+            - name: Setup Registry
+              uses: actions/setup-node@v1
+              with:
+                node-version: ${{ env.NODE_VERSION }}
+                registry-url: "https://npm.pkg.github.com"
+                scope: "@dependbottest"  
+                
             - name: Install Node Dependencies
               run: |
                 echo "::group::Install Node Dependencies"       
@@ -27,7 +35,6 @@ jobs:
               shell: bash
               env:
                 NODE_AUTH_TOKEN: ${{ env.NPM_AUTH_TOKEN }}
-
 
 #             - name: 🟢 node
 #               uses: actions/setup-node@v1.4.2
