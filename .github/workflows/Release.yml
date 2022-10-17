@@ -5,6 +5,9 @@ on:
     types: [closed] # Triggers on open PR and updated code
     branches: [master, main]
 
+env:
+  BASE_BRANCH: ${{github.event.pull_request.base.ref}}
+  
 jobs:
     release:
         name: 🚀 release
@@ -20,7 +23,7 @@ jobs:
                 node-version: ${{ env.NODE_VERSION }}
                 registry-url: "https://npm.pkg.github.com"
                 scope: "@dependbottest"  
-                
+              
             - name: Install Node Dependencies
               run: |
                 echo "::group::Install Node Dependencies"       
@@ -30,9 +33,18 @@ jobs:
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
                 
+            # Get version from package.json
+            - name: Get package version
+              id: package-version
+              run: |
+                echo "::group::Get Package Version"
+                echo "::set-output name=version::$(grep -m1 version package.json | awk -F: '{ print $2 }' | sed 's/[", ]//g')"
+                echo "::endgroup::"
+              shell: bash
+                
             # Create Release
             - name: Create Release
-              if: ${{ env.BASE_BRANCH }} == 'master'
+              if: ${{ env.BASE_BRANCH }} == 'main'
               uses: actions/create-release@v1
               env:
                 GITHUB_TOKEN: ${{ secrets.GHUB_TOKEN }}
