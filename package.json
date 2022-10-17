@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DependBotTest/node.git"
+    "url": "git+https://github.com/dependbottest/node.git"
   },
   "author": "Kirill Mokevnin",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DependBotTest/node/issues"
+    "url": "https://github.com/dependbottest/node/issues"
   },
   "type": "module",
-  "homepage": "https://github.com/DependBotTest/node#readme",
+  "homepage": "https://github.com/dependbottest/node#readme",
   "dependencies": {
     "debug": "^4.3.4",
     "lodash": "^4.17.21"
