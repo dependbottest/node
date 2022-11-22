@@ -5,10 +5,9 @@ metadata:
   description: The place to be, for great artists
   labels:
     example.com/custom: custom_label_value
-  name: node
   annotations:
-    github.com/project-slug: dependbottest/node
-    circleci.com/project-slug: github/example-org/artist-website
+    example.com/service-discovery: artistweb
+    circleci.com/project-slug: dependbottest/node
   tags:
     - java
   links:
