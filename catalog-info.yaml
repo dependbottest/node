@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: node
+  annotations:
+    github.com/project-slug: dependbottest/node
+spec:
+  type: other
+  lifecycle: unknown
+  owner: dependbottest
